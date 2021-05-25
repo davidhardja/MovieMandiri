@@ -1,6 +1,7 @@
 package com.example.moviemandiri
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -87,7 +88,7 @@ class MovieListActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
             }
             is ResultState.Error -> {
-                println("ASDASDDAD" + result.error)
+                Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
             }
         }
     }

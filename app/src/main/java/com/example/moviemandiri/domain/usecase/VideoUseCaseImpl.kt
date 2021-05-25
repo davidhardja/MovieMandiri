@@ -14,7 +14,7 @@ class VideoUseCaseImpl @Inject constructor(
         return if (result.isSuccessful) {
             ResultState.Success(result.body()?.results ?: listOf())
         } else {
-            ResultState.Error(null, result.errorBody().toString())
+            ResultState.Error(null, "Terjadi Kesalahan Silahkan Ulangi Lagi")
         }
     }
 }

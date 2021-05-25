@@ -2,6 +2,7 @@ package com.example.moviemandiri
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -120,7 +121,7 @@ class MovieDetailActivity : AppCompatActivity() {
                 renderHeader(result.data)
             }
             is ResultState.Error -> {
-
+                Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
             }
         }
 

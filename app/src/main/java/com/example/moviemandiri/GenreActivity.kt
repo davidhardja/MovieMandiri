@@ -4,12 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviemandiri.adapter.GenreAdapter
 import com.example.moviemandiri.domain.data.ResultState
 import com.example.moviemandiri.domain.usecase.GenreUseCase
 import com.example.moviemandiri.model.Genre
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.empty_view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -31,7 +34,6 @@ class GenreActivity : AppCompatActivity() {
         MainApplication.appComponent.injectMainActivity(this)
 
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
 
         fetchGenreList()
     }
@@ -53,9 +55,17 @@ class GenreActivity : AppCompatActivity() {
                 gridView.setOnItemClickListener { _, _, i, _ ->
                     goToMovieListFragment(result.data[i].id)
                 }
+                rlContainerEmpty.visibility = View.GONE
             }
-            else -> {
-
+            is ResultState.EmptySuccess -> {
+                tvEmpty.text = getString(R.string.genre_not_found)
+                rlContainerEmpty.visibility = View.VISIBLE
+            }
+            is ResultState.Error -> {
+                tvEmpty.text = getString(R.string.genre_not_found)
+                tvEmpty.text = getString(R.string.genre_not_found)
+                rlContainerEmpty.visibility = View.VISIBLE
+                Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
             }
         }
     }

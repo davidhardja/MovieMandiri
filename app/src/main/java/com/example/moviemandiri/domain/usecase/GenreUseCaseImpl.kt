@@ -12,9 +12,13 @@ class GenreUseCaseImpl @Inject constructor(
     override suspend fun getGenreList(): ResultState<List<Genre>> {
         val result = repository.getGenreList()
         return if (result.isSuccessful) {
-            ResultState.Success(result.body()?.genres ?: listOf())
+            if (result.body()?.genres?.isNotEmpty() == true) {
+                ResultState.Success(result.body()?.genres ?: listOf())
+            } else {
+                ResultState.EmptySuccess()
+            }
         } else {
-            ResultState.Error(null, result.errorBody().toString())
+            ResultState.Error(null, "Terjadi Kesalahan Silahkan Ulangi Lagi")
         }
     }
 }

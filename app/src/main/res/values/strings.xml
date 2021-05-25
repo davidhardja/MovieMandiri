@@ -11,4 +11,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="release_data">Release Date: %1$s</string>
+
+    <string name="genre_not_found">Genre Tidak Ditemukan</string>
 </resources>
