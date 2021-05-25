@@ -4,8 +4,12 @@ import com.example.moviemandiri.repository.GenreRepository
 import com.example.moviemandiri.repository.GenreRepositoryImpl
 import com.example.moviemandiri.domain.usecase.GenreUseCase
 import com.example.moviemandiri.domain.usecase.GenreUseCaseImpl
+import com.example.moviemandiri.domain.usecase.MovieDetailUseCase
+import com.example.moviemandiri.domain.usecase.MovieDetailUseCaseImpl
 import com.example.moviemandiri.domain.usecase.MovieListUseCase
 import com.example.moviemandiri.domain.usecase.MovieListUseCaseImpl
+import com.example.moviemandiri.repository.MovieDetailRepository
+import com.example.moviemandiri.repository.MovieDetailRepositoryImpl
 import com.example.moviemandiri.repository.MovieListRepository
 import com.example.moviemandiri.repository.MovieListRepositoryImpl
 import dagger.Binds
@@ -25,4 +29,10 @@ abstract class DataBinderModule {
 
     @Binds
     abstract fun provideMovieUseCase(useCase: MovieListUseCaseImpl) : MovieListUseCase
+
+    @Binds
+    abstract fun provideMovieDetailRepository(repository: MovieDetailRepositoryImpl) : MovieDetailRepository
+
+    @Binds
+    abstract fun provideMovieDetailUseCase(useCase: MovieDetailUseCaseImpl) : MovieDetailUseCase
 }
