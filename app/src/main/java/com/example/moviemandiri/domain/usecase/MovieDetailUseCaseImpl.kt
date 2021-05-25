@@ -12,7 +12,7 @@ class MovieDetailUseCaseImpl @Inject constructor(
     override suspend fun getMovieDetail(id: Int): ResultState<MovieDetail> {
         val result = repository.getMovieDetail(id)
         return if (result.isSuccessful) {
-            ResultState.Success(result.body()?.result ?: MovieDetail())
+            ResultState.Success(result.body() ?: MovieDetail())
         } else {
             ResultState.Error(null, result.errorBody().toString())
         }

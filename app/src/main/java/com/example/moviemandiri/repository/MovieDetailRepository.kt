@@ -1,9 +1,9 @@
 package com.example.moviemandiri.repository
 
-import com.example.moviemandiri.model.MovieDetailResponse
+import com.example.moviemandiri.model.MovieDetail
 import retrofit2.Response
 
 interface MovieDetailRepository {
 
-    suspend fun getMovieDetail(id: Int): Response<MovieDetailResponse>
+    suspend fun getMovieDetail(id: Int): Response<MovieDetail>
 }

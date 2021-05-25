@@ -2,8 +2,9 @@ package com.example.moviemandiri.network
 
 import com.example.moviemandiri.model.GenreResponse
 import com.example.moviemandiri.model.MovieDetail
-import com.example.moviemandiri.model.MovieDetailResponse
 import com.example.moviemandiri.model.MovieResponse
+import com.example.moviemandiri.model.ReviewResponse
+import com.example.moviemandiri.model.VideoResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -31,5 +32,18 @@ interface NetworkService {
     suspend fun getDetailMovie(
         @Path("movie_id") id: Int,
         @Query("api_key") key: String
-    ): Response<MovieDetailResponse>
+    ): Response<MovieDetail>
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieVideo(
+        @Path("movie_id") id: Int,
+        @Query("api_key") key: String
+    ): Response<VideoResponse>
+
+    @GET("movie/{movie_id}/reviews")
+    suspend fun getMovieReview(
+        @Path("movie_id") id: Int,
+        @Query("api_key") key: String,
+        @Query("page") page: Int
+    ): Response<ReviewResponse>
 }
