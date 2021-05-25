@@ -35,6 +35,11 @@ class GenreActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        swiperefresh.setOnRefreshListener {
+            swiperefresh.isRefreshing = false
+            fetchGenreList()
+        }
+
         fetchGenreList()
     }
 

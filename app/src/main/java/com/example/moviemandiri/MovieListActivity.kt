@@ -1,6 +1,7 @@
 package com.example.moviemandiri
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +11,7 @@ import com.example.moviemandiri.domain.data.ResultState
 import com.example.moviemandiri.domain.usecase.MovieListUseCase
 import com.example.moviemandiri.model.Movie
 import kotlinx.android.synthetic.main.activity_discover.*
+import kotlinx.android.synthetic.main.empty_view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -44,6 +46,13 @@ class MovieListActivity : AppCompatActivity() {
         page = 1
 
         initRecyclerView()
+
+        swiperefresh.setOnRefreshListener {
+            swiperefresh.isRefreshing = false
+            page = 1
+            movieList.clear()
+            fetchMovieList()
+        }
 
         fetchMovieList()
     }
@@ -90,6 +99,13 @@ class MovieListActivity : AppCompatActivity() {
             is ResultState.Error -> {
                 Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
             }
+        }
+
+        if (movieList.isEmpty()) {
+            tvEmpty.text = getString(R.string.movie_not_found)
+            rlContainerEmpty.visibility = View.VISIBLE
+        } else {
+            rlContainerEmpty.visibility = View.GONE
         }
     }
 }

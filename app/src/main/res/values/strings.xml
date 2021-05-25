@@ -13,4 +13,5 @@
     <string name="release_data">Release Date: %1$s</string>
 
     <string name="genre_not_found">Genre Tidak Ditemukan</string>
+    <string name="movie_not_found">Film Tidak Ditemukan</string>
 </resources>
