@@ -1,5 +1,6 @@
 package com.example.moviemandiri.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.moviemandiri.MovieDetailActivity
+import com.example.moviemandiri.MovieListActivity
 import com.example.moviemandiri.R
 import com.example.moviemandiri.model.Movie
 import com.example.moviemandiri.network.Api
@@ -38,6 +41,11 @@ class MovieAdapter(var dataSet: ArrayList<Movie>) :
             Glide.with(viewHolder.imageView.context)
                 .load(Api.getPosterPath(it))
                 .into(viewHolder.imageView)
+        }
+        viewHolder.itemView.setOnClickListener {
+            val intent = Intent(it.context, MovieDetailActivity::class.java)
+            intent.putExtra("movieId", movie.id)
+            it.context.startActivity(intent)
         }
 
     }
