@@ -2,10 +2,10 @@
 
 A simple project for [The Movie DB](https://www.themoviedb.org) based on Kotlin MVVM clean architecture<br>
 
-<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img1.png" style="width:200px;height:300px;">
-<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img2.png" style="width:200px;height:300px;">
-<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img3.png" style="width:200px;height:300px;">
-<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img4.png" style="width:200px;height:300px;">
+<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img1.png" width="200" height="300">
+<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img2.png" width="200" height="300">
+<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img3.png" width="200" height="300">
+<img src="https://github.com/davidhardja/MovieMandiri/blob/master/img4.png" width="200" height="300">
 
 ## Specs & Open-source libraries
 - Kotlin based
